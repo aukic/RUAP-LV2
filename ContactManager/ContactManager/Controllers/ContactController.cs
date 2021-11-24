@@ -1,31 +1,25 @@
 ﻿using ContactManager.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using ContactManager.Services;
 
 namespace ContactManager.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ContactController : ControllerBase
+    public class ContactController : ApiController
     {
         private ContactRepository contactRepository;
 
         public ContactController()
         {
             this.contactRepository = new ContactRepository();
-
-        }
-
-        [HttpGet]
+        } 
         public Contact[] Get()
         {
             return contactRepository.GetAllContacts();
         }
-        
     }
 }
